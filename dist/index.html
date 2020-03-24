@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurado o web pack</title>
+
+    <!-- <link rel="stylesheet" href="material-design-lite/material.min.css">
+    <script src="material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <link rel="stylesheet" href="bundle.css">
+
 </head>
-<body>
-    <h1>Teste</h1>
-<script src="main-6297b792417ba69b6d2a.js"></script></body>
+
+<body ng-app="materialApp" layout="row" ng-controller="appCtrl as app">
+
+    <h1>{{2+2}}</h1>>
+
+    <button class="foo-button mdc-button">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">button</span>
+    </button>
+
+<script src="bundle.js"></script></body>
+
+
 </html>
