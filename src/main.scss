@@ -4,6 +4,7 @@
 .foo-button {
     @include button.container-fill-color('secondary');
 }
+
 span {
     color: #fff
 }
