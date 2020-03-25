@@ -1,5 +1,5 @@
-import template from './Exemple.html'
-import '/Exemple.scss'
+// import template from './Exemple.html'
+// import '/Exemple.scss'
 
 class ExempleController {
     constructor() {
@@ -8,7 +8,6 @@ class ExempleController {
 }
 
 export const ExempleComponent = {
-    controller: ExempleController,
-    template,
-    controllerAs: 'ctrl'
+    controller: ExempleController,    
+    
 }
