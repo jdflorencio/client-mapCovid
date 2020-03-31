@@ -20,6 +20,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.html$/i,
+                loader: 'html-loader',
+                options: {
+                    // Disables attributes processing
+                    attributes: false,
+                }
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     {
@@ -58,7 +66,6 @@ module.exports = {
                 test: /\.js$/
             },
             {
-
                 exclude: /node_modules/,
                 test: /\.css$/,
                 use: [

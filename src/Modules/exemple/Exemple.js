@@ -1,15 +1,19 @@
-// import template from './exemple.html'
+import template from './Exemple.html'
 // import './'
 import './Exemple.scss'
 
 class ExempleController {
+    
     constructor() {
-        console.warn("MODULE DE EXEMPLO....")
+        this.name = "João diego"    
     }
+
 }
 
 export const ExempleComponent = {
-    controller: ExempleController,    
+    controller: ExempleController,
+    controllerAs: 'ctrl', 
+    template
     
     
 }
