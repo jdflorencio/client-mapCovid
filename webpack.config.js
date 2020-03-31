@@ -14,7 +14,7 @@ module.exports = {
         port: 5000
     },
     output: {
-        filename: 'bundle.js',
+        filename: '[name]-[hash].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -25,7 +25,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'bundle.css'
+                            name: '[name]-[hash].css'
                         }
                     },
                     { loader: 'extract-loader' },
