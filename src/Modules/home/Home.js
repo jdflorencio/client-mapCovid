@@ -1,19 +1,21 @@
 import template from './Home.html'
-// import './'
-import './Home.scss'
+
+import {MDCTopAppBar} from '@material/top-app-bar';
 
 class HomeController {
-    
     constructor() {
-        this.name = "Home"    
+       console.warn("MODULO HOME")
+        this.name = "Home"
+
+        
+        
     }
 
+    
 }
 
 export const HomeComponent = {
     controller: HomeController,
-    controllerAs: 'ctrl', 
+    controllerAs: 'ctrl',
     template
-    
-    
 }

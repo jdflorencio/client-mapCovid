@@ -33,7 +33,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[name]-[hash].css'
+                            name: 'bundle.css'
                         }
                     },
                     { loader: 'extract-loader' },

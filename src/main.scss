@@ -1,10 +1,39 @@
+@use "@material/theme" with (
+  $primary: #fff,
+  $secondary: #feeae6,
+  $on-primary: #442b2d,
+  $on-secondary: #442b2d,
+);
+
+
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/icon-button/mdc-icon-button";
+
+
+@use "@material/drawer/mdc-drawer";
+@use "@material/list/mdc-list";
+
+@use "@material/dialog/mdc-dialog";
+
 @use '@material/button/mdc-button';
 @use '@material/button';
 
+@use "@material/checkbox/mdc-checkbox"; // Required only for data table with row selection.
+@use "@material/data-table/mdc-data-table";
+
 .foo-button {
-    @include button.container-fill-color('secondary');
+  @include button.container-fill-color(primary);
 }
 
-span {
-    color: #fff
+.mdc-button {
+  @include button.container-fill-color(on-primary);
+  @include button.ink-color(on-primary);
+}
+
+body {
+  background-color: red;
+}
+
+header {
+  background-color: red;
 }
