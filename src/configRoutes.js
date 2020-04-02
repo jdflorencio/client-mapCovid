@@ -7,6 +7,10 @@ function configRoute($stateProvider, $urlRouterProvider, $locationProvider){
         url: '/',
         component: 'home'
     })
+    .state('cidade', {
+        url: '/cidade',
+        component: 'cidade'
+    })
     .state('teste', {
         url: '/exemple',
         component: 'exemple'

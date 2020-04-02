@@ -5,8 +5,8 @@ function HomeController($http, HomeService, $state) {
     self = this
     HomeService.getAll()
     
-    self.buscar = function() {
-        console.log('clicou')
+    self.verCidades = function(){
+        $state.go('')
     }
 }
 

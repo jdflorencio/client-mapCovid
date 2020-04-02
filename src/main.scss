@@ -12,6 +12,7 @@
 
 @use '@material/button/mdc-button';
 @use '@material/button';
+@use "@material/fab/mdc-fab";
 
 @use "@material/checkbox/mdc-checkbox"; // Required only for data table with row selection.
 @use "@material/data-table/mdc-data-table";
