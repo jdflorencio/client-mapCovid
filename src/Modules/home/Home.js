@@ -6,8 +6,6 @@ class HomeController {
     constructor() {
        console.warn("MODULO HOME")
         this.name = "Home"
-
-        
         
     }
 
