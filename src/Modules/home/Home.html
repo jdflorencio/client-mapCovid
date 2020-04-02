@@ -1,3 +1,4 @@
+
 <div class="row-text">
 
     <h1>Quadro Geral</h1>
@@ -26,30 +27,16 @@
                 </tr>
             </thead>
             <tbody class="mdc-data-table__content">
-                <tr class="mdc-data-table__row">
-                    <td class="mdc-data-table__cell">Frozen yogurt</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
-                    <td class="mdc-data-table__cell">Super tasty</td>
-                    <td class="mdc-data-table__cell">Super tasty</td>
+                <tr class="mdc-data-table__row" ng-repeat="q in ctrl.quadro">
+                    <td class="mdc-data-table__cell">{{q.uf}} </td>
+                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{q.caso_suspeito}}</td>
+                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{q.caso_analise}}</td>
+                    <td class="mdc-data-table__cell">{{q.caso_cofirmado}}</td>
+                    <td class="mdc-data-table__cell">{{q.caso_descartado}}</td>
                 </tr>
-                <tr class="mdc-data-table__row">
-                    <td class="mdc-data-table__cell">Ice cream sandwich</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
-                    <td class="mdc-data-table__cell">I like ice cream more</td>
-                    <td class="mdc-data-table__cell">I like ice cream more</td>
-                </tr>
-                <tr class="mdc-data-table__row">
-                    <td class="mdc-data-table__cell">Eclair</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
-                    <td class="mdc-data-table__cell">New filing flavor</td>
-                    <td class="mdc-data-table__cell">New filing flavor</td>
-                </tr>
-
             </tbody>
         </table>
+
     </mdTable>
 </div>
 

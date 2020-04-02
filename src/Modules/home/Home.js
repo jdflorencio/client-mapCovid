@@ -1,15 +1,13 @@
+
 import template from './Home.html'
 
-import {MDCTopAppBar} from '@material/top-app-bar';
-
-class HomeController {
-    constructor() {
-       console.warn("MODULO HOME")
-        this.name = "Home"
-        
-    }
-
+function HomeController($http, HomeService, $state) {
+    self = this
+    HomeService.getAll()
     
+    self.buscar = function() {
+        console.log('clicou')
+    }
 }
 
 export const HomeComponent = {
