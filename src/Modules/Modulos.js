@@ -4,6 +4,7 @@ import {CidadeComponent} from './cidade/Cidade'
 import {ExempleComponent} from './exemple/Exemple'
 import {OtherComponent} from './other/Other'
 
+import SubModulos from './SubModules/SubModulos'
 /* SERVICES */
 import HomeService from './home/HomeService'
 import CidadeService from './cidade/CidadeService'
@@ -11,7 +12,8 @@ import CidadeService from './cidade/CidadeService'
 const Modulos = 'modulos'
 angular.module(Modulos, [
     HomeService,
-    CidadeService
+    CidadeService,
+    SubModulos
 ])
 .component('home', HomeComponent)
 .component('cidade', CidadeComponent)

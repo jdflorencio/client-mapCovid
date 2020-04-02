@@ -8,8 +8,13 @@ function configRoute($stateProvider, $urlRouterProvider, $locationProvider){
         component: 'home'
     })
     .state('cidade', {
+
         url: '/cidade',
         component: 'cidade'
+    })
+    .state('cidade_editar', {
+        url: '/cidade/:id',
+        component: 'cidadeForm'
     })
     .state('teste', {
         url: '/exemple',
