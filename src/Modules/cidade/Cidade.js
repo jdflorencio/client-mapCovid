@@ -1,10 +1,13 @@
 
 import template from './Cidade.html'
 
-function CidadeController($http, CidadeService) {
+function CidadeController($http, CidadeService, $state) {
     self = this
     CidadeService.getAll()
-    
+
+    self.addCidade = function() {
+        $state.go('cidade_adicionar')
+    }
 
 }
 

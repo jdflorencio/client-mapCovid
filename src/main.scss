@@ -3,19 +3,15 @@
   $secondary: #feeae6,
   $on-primary: #442b2d,
   $on-secondary: #442b2d,
-);
-
+  );
 
 @use "@material/icon-button/mdc-icon-button";
-
 @use "@material/dialog/mdc-dialog";
-
 @use '@material/button/mdc-button';
 @use '@material/button';
 @use "@material/fab/mdc-fab";
-
-@use "@material/checkbox/mdc-checkbox"; // Required only for data table with row selection.
 @use "@material/data-table/mdc-data-table";
+@use "@material/textfield/mdc-text-field";
 
 @import "@material/layout-grid/mdc-layout-grid";
 

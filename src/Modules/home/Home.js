@@ -6,7 +6,8 @@ function HomeController($http, HomeService, $state) {
     HomeService.getAll()
     
     self.verCidades = function(){
-        $state.go('')
+        $state.go('cidade')
+
     }
 }
 

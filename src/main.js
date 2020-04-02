@@ -4,6 +4,7 @@ import './main.scss'
 import Modulos from './Modules/Modulos'
 import configRoute from './configRoutes'
 
+
 export const app = 'app'
 angular.module('app',  [
     'ui.router',
