@@ -13,7 +13,7 @@ function configRoute($stateProvider, $urlRouterProvider, $locationProvider){
         component: 'cidade'
     })
     .state('cidade_editar', {
-        url: '/cidade/:id',
+        url: '/cidade/{id}',
         component: 'cidadeForm'
     })
     .state('cidade_adicionar', {

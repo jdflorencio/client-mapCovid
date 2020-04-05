@@ -1,26 +1,44 @@
-<h1>Cidade Form</h1>
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__cell--span-12-desktop">
+        <button ng-click="ctrl.retornar()" class="mdc-button">
+            <div class="mdc-button__ripple"></div>
+            <i class="material-icons mdc-icon-button__icon">reply</i>
+            <span class="mdc-button__label"> Voltar a lista de cidades</span>
+        </button>
+        <h3>{{ctrl.title}}</h3>
+        <div class="mdc-card mdc-card--outlined">
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
 
-
-
-<div style="flex-flow: column-nowrap ; ">
-    <div>
-        <div class="mdc-text-field mdc-text-field--outlined">
-            <input class="mdc-text-field__input" id="text-field-hero-input">
-            <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__notch">
-                    <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                    <label for="text-field-hero-input" class="">Cidade</label>
+                    <div class="mdc-text-field mdc-text-field--outlined">
+                        <input class="mdc-text-field__input " id="text-field-hero-input" ng-model="ctrl.cidade.nome">
+                        <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mdc-notched-outline__trailing"></div>
+
+            </div>
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                    <label>UFs</label>
+                    <select name="" id="" ng-model="ctrl.cidade.uf">
+                        <option value="{{uf.value}}" ng-repeat="uf in ctrl.ufs">{{uf.descricao}} - {{uf.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
+                    <button ng-click="ctrl.retornar()" class="mdc-button">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label"> {{ctrl.button_text}}</span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-
-        <div class="mdc-text-field">
-            <input class="mdc-text-field__input" id="text-field-hero-input">
-            <div class="mdc-line-ripple"></div>
-            <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
-          </div>
     </div>
 </div>

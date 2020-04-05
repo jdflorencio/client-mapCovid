@@ -1,93 +1,100 @@
-<div class="row-text">
-    <h1>Quadro Geral</h1>
-    <div>
-        <button ng-click="ctrl.verCidades()" class="mdc-button">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Ver Cidades</span>
-        </button>
+{{ctrl.cidade}}
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__cell--span-12-desktop">
+        <div class="row-text">
+            <h1>Quadro Geral</h1>
+
+            <button ng-click="ctrl.verCidades()" class="mdc-button">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Ver Cidades</span>
+            </button>
+
+        </div>
+        <div class="grid-table-main">
+            <mdTable class="teste mdc-data-table">
+                <table class="mdc-data-table__table" aria-label="Dessert calories">
+                    <thead>
+                        <tr class="mdc-data-table__header-row">
+
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">UF</th>
+                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
+                                role="columnheader" scope="col">Casos Suspeito</th>
+                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
+                                role="columnheader" scope="col">Casos em análise</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos
+                                confirmados
+                            </th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos
+                                descartados
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="mdc-data-table__content">
+                        <tr class="mdc-data-table__row" ng-repeat="q in ctrl.quadro">
+                            <td class="mdc-data-table__cell">{{q.uf}} </td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{q.caso_suspeito}}</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{q.caso_analise}}</td>
+                            <td class="mdc-data-table__cell">{{q.caso_cofirmado}}</td>
+                            <td class="mdc-data-table__cell">{{q.caso_descartado}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mdTable>
+        </div>
+        <div class="row-text">
+            <h1 class="mdc-typography--headline3">Quadro por cidade</h1>
+            <button ng-click="ctrl.verCidades()" class="mdc-button">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Ver Cidades</span>
+            </button>
+        </div>
+        <div class="grid-table-main">
+            <mdTable class="teste mdc-data-table">
+                <table class="mdc-data-table__table" aria-label="Dessert calories">
+                    <thead>
+                        <tr class="mdc-data-table__header-row">
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Cidade</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">UF</th>
+                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
+                                role="columnheader" scope="col">Casos Suspeito</th>
+                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
+                                role="columnheader" scope="col">Casos em análise</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos confirmados
+                            </th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos descartados
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="mdc-data-table__content">
+                        <tr class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Frozen yogurt</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+                            <td class="mdc-data-table__cell">Super tasty</td>
+                            <td class="mdc-data-table__cell">Super tasty</td>
+                            <td class="mdc-data-table__cell">Super tasty</td>
+                        </tr>
+                        <tr class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Ice cream sandwich</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+                            <td class="mdc-data-table__cell">I like ice cream more</td>
+                            <td class="mdc-data-table__cell">I like ice cream more</td>
+                            <td class="mdc-data-table__cell">I like ice cream more</td>
+                        </tr>
+                        <tr class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Eclair</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+                            <td class="mdc-data-table__cell">New filing flavor</td>
+                            <td class="mdc-data-table__cell">New filing flavor</td>
+                            <td class="mdc-data-table__cell">New filing flavor</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </mdTable>
+        </div>
     </div>
-
-</div>
-<div style="display: flex; justify-content: center;  ">
-    <mdTable class="teste mdc-data-table">
-        <table class="mdc-data-table__table" aria-label="Dessert calories">
-            <thead>
-                <tr class="mdc-data-table__header-row">
-
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">UF</th>
-                    <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
-                        scope="col">Casos Suspeito</th>
-                    <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
-                        scope="col">Casos em análise</th>
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos confirmados</th>
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos descartados</th>
-                </tr>
-            </thead>
-            <tbody class="mdc-data-table__content">
-                <tr class="mdc-data-table__row" ng-repeat="q in ctrl.quadro">
-                    <td class="mdc-data-table__cell">{{q.uf}} </td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{q.caso_suspeito}}</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{q.caso_analise}}</td>
-                    <td class="mdc-data-table__cell">{{q.caso_cofirmado}}</td>
-                    <td class="mdc-data-table__cell">{{q.caso_descartado}}</td>
-                </tr>
-            </tbody>
-        </table>
-
-    </mdTable>
-</div>
-
-<div class="row-text">
-    <h1 class="mdc-typography--headline3">Quadro por cidade</h1>
-    <button ng-click="ctrl.verCidades()" class="mdc-button">
-        <div class="mdc-button__ripple"></div>
-        <span class="mdc-button__label">Ver Cidades</span>
-    </button>
-</div>
-
-<div class="grid-table-main">
-    <mdTable class="teste mdc-data-table">
-        <table class="mdc-data-table__table" aria-label="Dessert calories">
-            <thead>
-                <tr class="mdc-data-table__header-row">
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Cidade</th>
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">UF</th>
-                    <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
-                        scope="col">Casos Suspeito</th>
-                    <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
-                        scope="col">Casos em análise</th>
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos confirmados</th>
-                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Casos descartados</th>
-                </tr>
-            </thead>
-            <tbody class="mdc-data-table__content">
-                <tr class="mdc-data-table__row">
-                    <td class="mdc-data-table__cell">Frozen yogurt</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
-                    <td class="mdc-data-table__cell">Super tasty</td>
-                    <td class="mdc-data-table__cell">Super tasty</td>
-                    <td class="mdc-data-table__cell">Super tasty</td>
-                </tr>
-                <tr class="mdc-data-table__row">
-                    <td class="mdc-data-table__cell">Ice cream sandwich</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
-                    <td class="mdc-data-table__cell">I like ice cream more</td>
-                    <td class="mdc-data-table__cell">I like ice cream more</td>
-                    <td class="mdc-data-table__cell">I like ice cream more</td>
-                </tr>
-                <tr class="mdc-data-table__row">
-                    <td class="mdc-data-table__cell">Eclair</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
-                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
-                    <td class="mdc-data-table__cell">New filing flavor</td>
-                    <td class="mdc-data-table__cell">New filing flavor</td>
-                    <td class="mdc-data-table__cell">New filing flavor</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </mdTable>
 </div>
 </div>

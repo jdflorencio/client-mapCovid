@@ -1,7 +1,7 @@
 
 import template from './Cidade.html'
 
-function CidadeController($http, CidadeService, $state) {
+function CidadeController(CidadeService, $state) {
     self = this
     CidadeService.getAll()
 
