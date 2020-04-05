@@ -36,6 +36,16 @@ angular.module(CidadeFormService, [])
             })
         }
 
+        self.remove = function(param) {
+            return $http.delete(`${API}/cidade/${param}`)
+            .then( result => {
+                console.log(result.data)
+            })
+            .catch ( fail => {
+                console.log(fail.data)
+            })            
+        }
+
         services.ufs = function () {
             self.ufs = [
                 { descricao: "Rondônia", value: "RO" },

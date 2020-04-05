@@ -16,13 +16,16 @@ function CidadeController(CidadeFormService, $state, $stateParams) {
             $state.go('cidade_adicionar')
             self.title = "Adicionar Cidade"
             self.button_text = "Salvar"
+
     }
+
+    self.option_modal = ''
     self.retornar = function() {
         $state.go('cidade')
     }
 
     self.salvar = function() {
-        const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
+        const dialog = new MDCDialog(document.querySelector('.salved-dialog'));
         dialog.open()
     }
 
@@ -33,6 +36,11 @@ function CidadeController(CidadeFormService, $state, $stateParams) {
        } else if (self.button_text == "Salvar") {
            return CidadeFormService.add()
        }
+    }
+
+    self.removed = function() {
+        const dialog = new MDCDialog(document.querySelector('.removed-dialog'));
+        dialog.open()
     }
 }
 
