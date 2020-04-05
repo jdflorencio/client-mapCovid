@@ -1,4 +1,6 @@
 <div class="mdc-layout-grid">
+    <ui-alert titile="Aqui" message="error"></ui-alert>
+
     <div class="mdc-layout-grid__cell--span-12-desktop">
         <button ng-click="ctrl.retornar()" class="mdc-button">
             <div class="mdc-button__ripple"></div>
@@ -6,10 +8,11 @@
             <span class="mdc-button__label"> Voltar a lista de cidades</span>
         </button>
         <h3>{{ctrl.title}}</h3>
+
         <div class="mdc-card mdc-card--outlined">
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
-
+                    
                     <label for="text-field-hero-input" class="">Cidade</label>
                     <div class="mdc-text-field mdc-text-field--outlined">
                         <input class="mdc-text-field__input " id="text-field-hero-input" ng-model="ctrl.cidade.nome">
@@ -21,7 +24,8 @@
                         </div>
                     </div>
                 </div>
-
+                
+                
             </div>
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
@@ -33,7 +37,7 @@
             </div>
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
-                    <button ng-click="ctrl.retornar()" class="mdc-button">
+                    <button ng-click="ctrl.salvar()" class="mdc-button">
                         <div class="mdc-button__ripple"></div>
                         <span class="mdc-button__label"> {{ctrl.button_text}}</span>
                     </button>
@@ -42,3 +46,38 @@
         </div>
     </div>
 </div>
+
+<!-- dialog -->
+
+<div class="mdc-dialog">
+    <div class="mdc-dialog__container">
+      <div class="mdc-dialog__surface"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="my-dialog-title"
+        aria-describedby="my-dialog-content">
+        <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+        <h2 class="mdc-dialog__title" id="my-dialog-title"><!--
+       -->Deseja continuar {{$id}}<!--
+     --></h2>
+        <div class="mdc-dialog__content" id="my-dialog-content">
+          Deseja salvar
+        </div>
+        <footer class="mdc-dialog__actions">
+          <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Cancelar</span>
+          </button>
+          <button  ng-click="ctrl.confirmado(true)"type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+            <div class="mdc-button__ripple"></div>
+            <span  class="mdc-button__label">Salvar</span>
+          </button>
+        </footer>
+      </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </div>
+
+  <!-- Modal -->
+
+  

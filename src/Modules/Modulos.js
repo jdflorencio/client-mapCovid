@@ -3,6 +3,7 @@ import {HomeComponent} from './home/Home'
 import {CidadeComponent} from './cidade/Cidade'
 import {ExempleComponent} from './exemple/Exemple'
 import {OtherComponent} from './other/Other'
+import { MDCDialog } from '@material/dialog';
 
 import SubModulos from './SubModules/SubModulos'
 /* SERVICES */
