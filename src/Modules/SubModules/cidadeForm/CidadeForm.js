@@ -6,6 +6,7 @@ import { MDCDialog } from '@material/dialog';
 function CidadeController(CidadeFormService, $state, $stateParams,  $scope) {
     self = this
     
+    
     $scope.error ="OBs asdasdasd "
     let urlParams = Number.isInteger(parseInt($stateParams.id))
     CidadeFormService.ufs()
@@ -28,6 +29,7 @@ function CidadeController(CidadeFormService, $state, $stateParams,  $scope) {
     const dialog = function() {
         const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
         dialog.open()
+        console.log(dialog.layout())
         
     }
 

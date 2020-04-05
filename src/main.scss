@@ -21,11 +21,6 @@
 @import "@material/layout-grid/mdc-layout-grid";
 
 
-
-.mdc-layout-grid__inner {
-  justify-content:  center;
-}
-
 .foo-button {
   @include button.container-fill-color(primary);
 }
