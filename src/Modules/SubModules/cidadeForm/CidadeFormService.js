@@ -1,15 +1,39 @@
 const CidadeFormService = 'cidadeFormService'
 angular.module(CidadeFormService, [])
-    .factory('CidadeFormService', function ($http, API) {
+    .factory('CidadeFormService', function ($http, API, $state) {
         const services = {}
         services.getOne = function (id) {
             return $http.get(`${API}/cidade/${id}`)
                 .then(result => {
                     self.cidade = result.data.dados
                 })
-                .catch(error => {
-                    console.log(error)
+                .catch(fail => {
+                    console.log(fail)
                 })
+        }
+
+        services.update = function(param) {
+            return $http.put(`${API}/cidade/${param}`, self.cidade)
+            .then(result => {
+                console.log(result.data)
+            })
+            .catch( fail => {
+                console.log(fail)
+            })
+        }
+
+        services.add = function() {
+            return $http.post(`${API}/cidade`, self.cidade)
+            .then( result => {
+                $state.go('cidade_editar', {id: result.data.dados})
+            })
+            .catch( fail => {
+                self.error = {
+                    path: fail.data.error[0],
+                    message: fail.data.error[1]
+                }                
+                console.log(fail.data)
+            })
         }
 
         services.ufs = function () {

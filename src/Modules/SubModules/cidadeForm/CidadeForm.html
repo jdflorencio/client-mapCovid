@@ -10,22 +10,13 @@
         <h3>{{ctrl.title}}</h3>
 
         <div class="mdc-card mdc-card--outlined">
+           
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
-                    
-                    <label for="text-field-hero-input" class="">Cidade</label>
-                    <div class="mdc-text-field mdc-text-field--outlined">
-                        <input class="mdc-text-field__input " id="text-field-hero-input" ng-model="ctrl.cidade.nome">
-                        <div class="mdc-notched-outline">
-                            <div class="mdc-notched-outline__leading"></div>
-                            <div class="mdc-notched-outline__notch">
-                            </div>
-                            <div class="mdc-notched-outline__trailing"></div>
-                        </div>
-                    </div>
+                    <label>Cidade</label>
+                   <input type="text" ng-model="ctrl.cidade.nome" >
+                   <div ng-if="ctrl.error.path == 'nome'" style="color: red"> {{ctrl.error.message}}</div>
                 </div>
-                
-                
             </div>
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
@@ -33,6 +24,7 @@
                     <select name="" id="" ng-model="ctrl.cidade.uf">
                         <option value="{{uf.value}}" ng-repeat="uf in ctrl.ufs">{{uf.descricao}} - {{uf.value}}</option>
                     </select>
+                    <div ng-if="ctrl.error.path == 'uf'" style="color: red"> {{ctrl.error.message}}</div>
                 </div>
             </div>
             <div class="mdc-layout-grid__inner">
@@ -61,9 +53,7 @@
        -->Deseja continuar {{$id}}<!--
         
      --></h2>
-     <select name="" id="">
-         <option>Tessadasd</option>
-     </select>
+  
         <div class="mdc-dialog__content" id="my-dialog-content">
           Deseja salvar
         </div>
@@ -72,7 +62,7 @@
             <div class="mdc-button__ripple"></div>
             <span class="mdc-button__label">Cancelar</span>
           </button>
-          <button  ng-click="ctrl.confirmado(true)"type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+          <button  ng-click="ctrl.confirmado()"type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
             <div class="mdc-button__ripple"></div>
             <span  class="mdc-button__label">Salvar</span>
           </button>
@@ -82,33 +72,4 @@
     <div class="mdc-dialog__scrim"></div>
   </div>
 
-  <!-- Modal -->
-
-  <div class="mdc-dialog" >
-  <div class="mdc-dialog__container" style="min-width: 600px;">
-    <div class="mdc-dialog__surface"
-      role="alertdialog"
-      aria-modal="true"
-      aria-labelledby="my-dialog-title"
-      aria-describedby="my-dialog-content">
-      <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
-      <h2 class="mdc-dialog__title" id="my-dialog-title"><!--
-     -->Dialog Title<!--
-   --></h2>
-      <div class="mdc-dialog__content" id="my-dialog-content">
-        Dialog body text goes here. sdfasd sdfnsdfklsdklfsdklfsjdlfkjsdflksjdfl
-      </div>
-      <footer class="mdc-dialog__actions">
-        <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
-          <div class="mdc-button__ripple"></div>
-          <span class="mdc-button__label">No</span>
-        </button>
-        <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
-          <div class="mdc-button__ripple"></div>
-          <span class="mdc-button__label">Yes</span>
-        </button>
-      </footer>
-    </div>
-  </div>
-  <div class="mdc-dialog__scrim"></div>
-</div>
+  

@@ -1,7 +1,8 @@
 /* @ngInject */
-function configRoute($stateProvider, $urlRouterProvider, $locationProvider){
+function configRoute($stateProvider, $urlRouterProvider){
     // $locationProvider.html5Mode(true).hashPrefix('!')
     $urlRouterProvider.otherwise('/')
+
     $stateProvider
     .state('home', {
         url: '/',

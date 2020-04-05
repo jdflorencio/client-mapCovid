@@ -1,16 +1,11 @@
 
 import template from './CidadeForm.html'
-import { MDCDialog } from '@material/dialog';
+import { MDCDialog } from '@material/dialog'
 
-
-function CidadeController(CidadeFormService, $state, $stateParams,  $scope) {
+function CidadeController(CidadeFormService, $state, $stateParams) {
     self = this
-    
-    
-    $scope.error ="OBs asdasdasd "
     let urlParams = Number.isInteger(parseInt($stateParams.id))
     CidadeFormService.ufs()
-    self.nome = 'teste'
     switch (urlParams) {
         case true:
             self.title = "Editar Cidade"
@@ -20,28 +15,25 @@ function CidadeController(CidadeFormService, $state, $stateParams,  $scope) {
         default:
             $state.go('cidade_adicionar')
             self.title = "Adicionar Cidade"
-            self.button_text = "Salvar" 
+            self.button_text = "Salvar"
     }
-    self.retornar = function () {
+    self.retornar = function() {
         $state.go('cidade')
     }
 
-    const dialog = function() {
+    self.salvar = function() {
         const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
         dialog.open()
-        console.log(dialog.layout())
-        
     }
 
-    self.confirmado = function(param){
-        console.log(">>>", param)
+    self.confirmado = function() {
+       if(self.button_text == "Atualizar") {
+           return CidadeFormService.update($stateParams.id)
+
+       } else if (self.button_text == "Salvar") {
+           return CidadeFormService.add()
+       }
     }
-    
-    self.salvar = function() {
-        dialog()
-        
-    }
-    
 }
 
 export const CidadeForm = {

@@ -9,6 +9,9 @@ function CidadeController(CidadeService, $state) {
         $state.go('cidade_adicionar')
     }
 
+    self.editar = function(id) {
+        $state.go('cidade_editar', {id})
+    }
 }
 
 export const CidadeComponent = {
