@@ -27,7 +27,11 @@
                                 <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
                                     role="columnheader" scope="col">Pessoa</th>
                                 <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
+                                    role="columnheader" scope="col">Cidade</th>
+                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
                                     role="columnheader" scope="col">UF</th>
+                                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric"
+                                    role="columnheader" scope="col">Situação</th>
                                 <th class="mdc-data-table__header-cell" role="columnheader" scope="col">#</th>
 
                             </tr>
@@ -36,11 +40,14 @@
                             <tr class="mdc-data-table__row" ng-repeat="pessoa in ctrl.pessoas">
                                 <td class="mdc-data-table__cell">{{pessoa.id}} </td>
                                 <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{pessoa.nome}}</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{pessoa.uf}}</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{pessoa.cidade.nome}}
+                                </td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{pessoa.cidade.uf}}</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{pessoa.prontuario[0].situacao}}</td>
                                 <td class="mdc-data-table__cell">
 
-                                    <button ng-click="ctrl.editar(pessoa.id)" id="add-to-favorites" class="mdc-icon-button" aria-label="Add to favorites"
-                                        aria-pressed="false">
+                                    <button ng-click="ctrl.editar(pessoa.id)" id="add-to-favorites"
+                                        class="mdc-icon-button" aria-label="Add to favorites" aria-pressed="false">
                                         <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"></i>
                                         <i class="material-icons mdc-icon-button__icon">edit</i>
                                     </button>

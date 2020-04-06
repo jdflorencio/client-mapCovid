@@ -5,7 +5,7 @@ import { MDCDialog } from '@material/dialog'
 function PessoaController(PessoaFormService, $state, $stateParams) {
     self = this
     let urlParams = Number.isInteger(parseInt($stateParams.id))
-    PessoaFormService.ufs()
+    PessoaFormService.cidades()
     switch (urlParams) {
         case true:
             self.title = "Editar Pessoa"

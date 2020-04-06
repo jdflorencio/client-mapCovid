@@ -13,6 +13,17 @@ angular.module(PessoaFormService, [])
                 })
         }
 
+
+        services.cidades = function(){
+            $http.get(`${API}/cidade`)
+            .then( result => {
+                self.cidades = result.data.dados
+            })
+            .catch( fail => {
+                MainService.notificacao()
+            })
+        }
+
         services.update = function(param) {
             return $http.put(`${API}/pessoa/${param}`, self.pessoa)
             .then(result => {
