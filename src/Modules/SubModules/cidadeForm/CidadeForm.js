@@ -38,9 +38,13 @@ function CidadeController(CidadeFormService, $state, $stateParams) {
        }
     }
 
-    self.removed = function() {
+    self.modalRemove = function() {
         const dialog = new MDCDialog(document.querySelector('.removed-dialog'));
         dialog.open()
+    }
+
+    self.removed = function() {
+        CidadeFormService.remove($stateParams.id)
     }
 }
 

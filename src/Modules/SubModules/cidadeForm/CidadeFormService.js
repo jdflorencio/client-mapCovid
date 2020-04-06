@@ -1,10 +1,11 @@
 const CidadeFormService = 'cidadeFormService'
 angular.module(CidadeFormService, [])
-    .factory('CidadeFormService', function ($http, API, $state) {
+    .factory('CidadeFormService', function ($http, API, $state, MainService) {
         const services = {}
         services.getOne = function (id) {
             return $http.get(`${API}/cidade/${id}`)
                 .then(result => {
+                    
                     self.cidade = result.data.dados
                 })
                 .catch(fail => {
@@ -15,16 +16,17 @@ angular.module(CidadeFormService, [])
         services.update = function(param) {
             return $http.put(`${API}/cidade/${param}`, self.cidade)
             .then(result => {
-                console.log(result.data)
+                MainService.notificacao(result.status, result.data.mensagem)
             })
             .catch( fail => {
-                console.log(fail)
+                MainService.notificacao(fail.status, fail.data.mensagem)
             })
         }
 
         services.add = function() {
             return $http.post(`${API}/cidade`, self.cidade)
             .then( result => {
+                MainService.notificacao(result.status, result.data.mensagem)
                 $state.go('cidade_editar', {id: result.data.dados})
             })
             .catch( fail => {
@@ -36,13 +38,13 @@ angular.module(CidadeFormService, [])
             })
         }
 
-        self.remove = function(param) {
+        services.remove = function(param) {
             return $http.delete(`${API}/cidade/${param}`)
             .then( result => {
-                console.log(result.data)
+                MainService.notificacao(result.status, result.data.mensagem)
             })
             .catch ( fail => {
-                console.log(fail.data)
+                MainService.notificacao(fail.status, fail.data.mensagem)
             })            
         }
 
