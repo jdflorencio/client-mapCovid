@@ -41,7 +41,8 @@ angular.module(CidadeFormService, [])
         services.remove = function(param) {
             return $http.delete(`${API}/cidade/${param}`)
             .then( result => {
-                MainService.notificacao(result.status, result.data.mensagem)
+                $state.go('cidade')
+                MainService.notificacao(result.status, "Removido sucesso!")
             })
             .catch ( fail => {
                 MainService.notificacao(fail.status, fail.data.mensagem)
