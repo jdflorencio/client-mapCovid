@@ -1,0 +1,115 @@
+<div class="mdc-layout-grid">
+    <ui-alert titile="Aqui" message="error"></ui-alert>
+
+    <div class="mdc-layout-grid__cell--span-12-desktop">
+        <button ng-click="ctrl.retornar()" class="mdc-button">
+            <div class="mdc-button__ripple"></div>
+            <i class="material-icons mdc-icon-button__icon">reply</i>
+            <span class="mdc-button__label"> Voltar a lista de pessoas</span>
+        </button>
+        <h3>{{ctrl.title}}</h3>
+        <div class="mdc-card mdc-card--outlined">
+
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                    <label>Pessoa</label>
+                    <input type="text" ng-model="ctrl.pessoa.nome">
+                    <div ng-if="ctrl.error.path == 'nome'" style="color: red"> {{ctrl.error.message}}</div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                    <label>UFs</label>
+                    <select name="" id="" ng-model="ctrl.pessoa.uf">
+                        <option value="{{uf.value}}" ng-repeat="uf in ctrl.ufs">{{uf.descricao}} - {{uf.value}}</option>
+                    </select>
+                    <div ng-if="ctrl.error.path == 'uf'" style="color: red"> {{ctrl.error.message}}</div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
+                    <button ng-click="ctrl.salvar()" class="mdc-button">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label"> {{ctrl.button_text}}</span>
+                    </button>
+
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
+                        <button ng-click="ctrl.modalRemove()" class="mdc-button">
+                            <div class="mdc-button__ripple"></div>
+                            <span class="mdc-button__label"> Excluir</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- dialog -->
+
+<div class="mdc-dialog salved-dialog">
+    <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+            aria-describedby="my-dialog-content">
+
+            <h2 class="mdc-dialog__title" id="my-dialog-title">
+                <!--
+       --> {{ctrl.pessoa.nome}}
+                <!--
+        
+     -->
+            </h2>
+
+            <div class="mdc-dialog__content" id="my-dialog-content">
+                Deseja {{ctrl.button_text}}?
+            </div>
+            <footer class="mdc-dialog__actions">
+                <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Cancelar</span>
+                </button>
+                <button ng-click="ctrl.confirmado()" type="button" class="mdc-button mdc-dialog__button"
+                    data-mdc-dialog-action="yes">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Salvar</span>
+                </button>
+            </footer>
+        </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+</div>
+
+<!-- dialog  2-->
+
+<div class="mdc-dialog removed-dialog">
+    <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+            aria-describedby="my-dialog-content">
+
+            <h2 class="mdc-dialog__title" id="my-dialog-title">
+                <!--
+       --> {{ctrl.pessoa.nome}}
+                <!--
+        
+     -->
+            </h2>
+
+            <div class="mdc-dialog__content" id="my-dialog-content">
+                Deseja Excluir?
+            </div>
+            <footer class="mdc-dialog__actions">
+                <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Não</span>
+                </button>
+                <button ng-click="ctrl.removed()" type="button" class="mdc-button mdc-dialog__button"
+                    data-mdc-dialog-action="yes">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label">Sim</span>
+                </button>
+            </footer>
+        </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+</div>

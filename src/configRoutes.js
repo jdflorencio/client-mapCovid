@@ -2,7 +2,6 @@
 function configRoute($stateProvider, $urlRouterProvider){
     // $locationProvider.html5Mode(true).hashPrefix('!')
     $urlRouterProvider.otherwise('/')
-
     $stateProvider
     .state('home', {
         url: '/',
@@ -21,13 +20,18 @@ function configRoute($stateProvider, $urlRouterProvider){
         url: '/cidade/nova',
         component: 'cidadeForm'
     })
-    .state('teste', {
-        url: '/exemple',
-        component: 'exemple'
+    .state('pessoa', {
+
+        url: '/pessoa',
+        component: 'pessoa'
     })
-    .state('aqui', {
-        url:'/other',
-        component: 'other'
+    .state('pessoa_editar', {
+        url: '/pessoa/{id}',
+        component: 'pessoaForm'
+    })
+    .state('pessoa_adicionar', {
+        url: '/pessoa/nova',
+        component: 'pessoaForm'
     })
 
 }
