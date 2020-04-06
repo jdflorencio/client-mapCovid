@@ -25,7 +25,7 @@ angular.module(PessoaService, [])
               pessoa.prontuario[0].situacao = "Descartado"
             }
         })
-        console.log(result.data.dados)
+        
       self.pessoas = result.data.dados
 
     })

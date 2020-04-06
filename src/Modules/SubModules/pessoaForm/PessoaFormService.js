@@ -5,8 +5,26 @@ angular.module(PessoaFormService, [])
         services.getOne = function (id) {
             return $http.get(`${API}/pessoa/${id}`)
                 .then(result => {
-                    
                     result.data.dados.data_nascimento = $filter('date')(result.data.dados.data_nascimento, 'dd/MM/yyyy')
+                    result.data.dados.prontuario.map(prontuario => {
+
+
+                        if (prontuario.situacao == 1) {
+                            prontuario.situacao = "Casos Suspeito"
+                        }
+
+                        if (prontuario.situacao == 2) {
+                            prontuario.situacao = "Casos análise"
+                        }
+
+                        if (prontuario.situacao == 3) {
+                            prontuario.situacao = "Casos confirmado"
+                        }
+
+                        if (prontuario.situacao == 4) {
+                            prontuario.situacao = "Descartado"
+                        }
+                    })
                     self.pessoa = result.data.dados
                 })
                 .catch(fail => {
@@ -15,54 +33,54 @@ angular.module(PessoaFormService, [])
         }
 
 
-        services.cidades = function(){
+        services.cidades = function () {
             $http.get(`${API}/cidade`)
-            .then( result => {
-                self.cidades = result.data.dados
-            })
-            .catch( fail => {
-                MainService.notificacao()
-            })
+                .then(result => {
+                    self.cidades = result.data.dados
+                })
+                .catch(fail => {
+                    MainService.notificacao()
+                })
         }
 
-        services.update = function(param) {
+        services.update = function (param) {
             return $http.put(`${API}/pessoa/${param}`, self.pessoa)
-            .then(result => {
-                MainService.notificacao(result.status, result.data.mensagem)
-            })
-            .catch( fail => {
-                self.error = {
-                    path: fail.data.error[0],
-                    message: fail.data.error[1]
-                }       
-                MainService.notificacao(fail.status, fail.data.mensagem)
-            })
+                .then(result => {
+                    MainService.notificacao(result.status, result.data.mensagem)
+                })
+                .catch(fail => {
+                    self.error = {
+                        path: fail.data.error[0],
+                        message: fail.data.error[1]
+                    }
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
         }
 
-        services.add = function() {
+        services.add = function () {
             return $http.post(`${API}/pessoa`, self.pessoa)
-            .then( result => {
-                MainService.notificacao(result.status, result.data.mensagem)
-                $state.go('pessoa_editar', {id: result.data.dados})
-            })
-            .catch( fail => {
-                self.error = {
-                    path: fail.data.error[0],
-                    message: fail.data.error[1]
-                }                
-                MainService.notificacao(fail.status, fail.data.mensagem)
-            })
+                .then(result => {
+                    MainService.notificacao(result.status, result.data.mensagem)
+                    $state.go('pessoa_editar', { id: result.data.dados })
+                })
+                .catch(fail => {
+                    self.error = {
+                        path: fail.data.error[0],
+                        message: fail.data.error[1]
+                    }
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
         }
 
-        services.remove = function(param) {
+        services.remove = function (param) {
             return $http.delete(`${API}/pessoa/${param}`)
-            .then( result => {
-                $state.go('pessoa')
-                MainService.notificacao(result.status, "Removido sucesso!")
-            })
-            .catch ( fail => {
-                MainService.notificacao(fail.status, fail.data.mensagem)
-            })            
+                .then(result => {
+                    $state.go('pessoa')
+                    MainService.notificacao(result.status, "Removido sucesso!")
+                })
+                .catch(fail => {
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
         }
 
         services.ufs = function () {
