@@ -7,7 +7,7 @@
             <i class="material-icons mdc-icon-button__icon">reply</i>
             <span class="mdc-button__label"> Voltar a lista de pessoas</span>
         </button>
-        
+
         <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell">
@@ -53,7 +53,8 @@
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
                         <label>Data de Nasicmento *</label>
                         <input type="text" ng-model="ctrl.pessoa.data_nascimento" ui-date-mask>
-                        <div ng-if="ctrl.error.path == 'data_nascimento'" style="color: red"> {{ctrl.error.message}}</div>
+                        <div ng-if="ctrl.error.path == 'data_nascimento'" style="color: red"> {{ctrl.error.message}}
+                        </div>
                     </div>
                     </h3>
                 </div>

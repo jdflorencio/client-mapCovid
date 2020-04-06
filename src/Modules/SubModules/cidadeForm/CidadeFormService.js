@@ -5,7 +5,7 @@ angular.module(CidadeFormService, [])
         services.getOne = function (id) {
             return $http.get(`${API}/cidade/${id}`)
                 .then(result => {
-                    
+
                     self.cidade = result.data.dados
                 })
                 .catch(fail => {
@@ -13,44 +13,44 @@ angular.module(CidadeFormService, [])
                 })
         }
 
-        services.update = function(param) {
+        services.update = function (param) {
             return $http.put(`${API}/cidade/${param}`, self.cidade)
-            .then(result => {
-                MainService.notificacao(result.status, result.data.mensagem)
-            })
-            .catch( fail => {
-                self.error = {
-                    path: fail.data.error[0],
-                    message: fail.data.error[1]
-                }
-                MainService.notificacao(fail.status, fail.data.mensagem)
-            })
+                .then(result => {
+                    MainService.notificacao(result.status, result.data.mensagem)
+                })
+                .catch(fail => {
+                    self.error = {
+                        path: fail.data.error[0],
+                        message: fail.data.error[1]
+                    }
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
         }
 
-        services.add = function() {
+        services.add = function () {
             return $http.post(`${API}/cidade`, self.cidade)
-            .then( result => {
-                MainService.notificacao(result.status, result.data.mensagem)
-                $state.go('cidade_editar', {id: result.data.dados})
-            })
-            .catch( fail => {
-                self.error = {
-                    path: fail.data.error[0],
-                    message: fail.data.error[1]
-                }                
-                MainService.notificacao(fail.status, fail.data.mensagem)
-            })
+                .then(result => {
+                    MainService.notificacao(result.status, result.data.mensagem)
+                    $state.go('cidade_editar', { id: result.data.dados })
+                })
+                .catch(fail => {
+                    self.error = {
+                        path: fail.data.error[0],
+                        message: fail.data.error[1]
+                    }
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
         }
 
-        services.remove = function(param) {
+        services.remove = function (param) {
             return $http.delete(`${API}/cidade/${param}`)
-            .then( result => {
-                $state.go('cidade')
-                MainService.notificacao(result.status, "Removido sucesso!")
-            })
-            .catch ( fail => {
-                MainService.notificacao(fail.status, fail.data.mensagem)
-            })            
+                .then(result => {
+                    $state.go('cidade')
+                    MainService.notificacao(result.status, "Removido sucesso!")
+                })
+                .catch(fail => {
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
         }
 
         services.ufs = function () {
