@@ -5,6 +5,7 @@ import Modulos from './Modules/Modulos'
 import configRoute from './configRoutes'
 import 'ng-notify'
 import MainService from './main.services'
+import 'angular-input-masks/br'
 
 
 
@@ -12,6 +13,7 @@ export const app = 'app'
 angular.module('app',  [
     'ui.router',
     'ngNotify',
+    'ui.utils.masks',
     MainService,
     Modulos
     

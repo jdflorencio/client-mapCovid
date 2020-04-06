@@ -19,6 +19,10 @@ angular.module(CidadeFormService, [])
                 MainService.notificacao(result.status, result.data.mensagem)
             })
             .catch( fail => {
+                self.error = {
+                    path: fail.data.error[0],
+                    message: fail.data.error[1]
+                }
                 MainService.notificacao(fail.status, fail.data.mensagem)
             })
         }
@@ -34,7 +38,7 @@ angular.module(CidadeFormService, [])
                     path: fail.data.error[0],
                     message: fail.data.error[1]
                 }                
-                console.log(fail.data)
+                MainService.notificacao(fail.status, fail.data.mensagem)
             })
         }
 

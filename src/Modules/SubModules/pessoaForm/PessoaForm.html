@@ -7,7 +7,39 @@
             <i class="material-icons mdc-icon-button__icon">reply</i>
             <span class="mdc-button__label"> Voltar a lista de pessoas</span>
         </button>
-        <h3>{{ctrl.title}}</h3>
+        
+        <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell">
+                    <h3>{{ctrl.title}}</h3>
+                </div>
+
+                <div class="mdc-layout-grid__cell">
+                    <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell">
+                            <button ng-click="ctrl.retornar()" class="mdc-button">
+                                <div class="mdc-button__ripple"></div>
+
+                                <span class="mdc-button__label"> Editar dados</span>
+                            </button>
+                        </div>
+                        <div class="mdc-layout-grid__cell">
+                            <button ng-click="ctrl.retornar()" class="mdc-button">
+                                <div class="mdc-button__ripple"></div>
+
+                                <span class="mdc-button__label"> Alterar Cidade</span>
+                            </button>
+                        </div>
+                        <div class="mdc-layout-grid__cell">
+                            <button ng-click="ctrl.retornar()" class="mdc-button">
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label"> Atualizar Prontuario</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="mdc-card mdc-card--outlined">
 
             <div class="mdc-layout-grid__inner">
@@ -16,12 +48,23 @@
                     <input type="text" ng-model="ctrl.pessoa.nome">
                     <div ng-if="ctrl.error.path == 'nome'" style="color: red"> {{ctrl.error.message}}</div>
                 </div>
+                <div class="mdc-layout-grid__cell">
+
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                        <label>Data de Nasicmento *</label>
+                        <input type="text" ng-model="ctrl.pessoa.data_nascimento" ui-date-mask>
+                        <div ng-if="ctrl.error.path == 'data_nascimento'" style="color: red"> {{ctrl.error.message}}</div>
+                    </div>
+                    </h3>
+                </div>
             </div>
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
                     <label>Cidade *</label>
-                    <select name="" id="" ng-model="ctrl.pessoa.uf">
-                        <option value="{{cidade.id}}" ng-repeat="cidade in ctrl.cidades">{{cidade.nome}} - {{cidade.uf}}</option>
+                    <select name="" id="" ng-model="ctrl.pessoa.cidade_id">
+                        <option ng-value="cidade.id" value="cidade.id" ng-repeat="cidade in ctrl.cidades">
+                            {{cidade.nome}} - {{cidade.uf}}
+                        </option>
                     </select>
                     <div ng-if="ctrl.error.path == 'uf'" style="color: red"> {{ctrl.error.message}}</div>
                 </div>

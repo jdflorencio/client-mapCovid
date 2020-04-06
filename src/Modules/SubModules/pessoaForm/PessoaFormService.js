@@ -1,15 +1,16 @@
 const PessoaFormService = 'pessoaFormService'
 angular.module(PessoaFormService, [])
-    .factory('PessoaFormService', function ($http, API, $state, MainService) {
+    .factory('PessoaFormService', function ($http, API, $state, MainService, $filter) {
         const services = {}
         services.getOne = function (id) {
             return $http.get(`${API}/pessoa/${id}`)
                 .then(result => {
                     
+                    result.data.dados.data_nascimento = $filter('date')(result.data.dados.data_nascimento, 'dd/MM/yyyy')
                     self.pessoa = result.data.dados
                 })
                 .catch(fail => {
-                    console.log(fail)
+                    MainService.notificacao()
                 })
         }
 
@@ -30,6 +31,10 @@ angular.module(PessoaFormService, [])
                 MainService.notificacao(result.status, result.data.mensagem)
             })
             .catch( fail => {
+                self.error = {
+                    path: fail.data.error[0],
+                    message: fail.data.error[1]
+                }       
                 MainService.notificacao(fail.status, fail.data.mensagem)
             })
         }
@@ -45,7 +50,7 @@ angular.module(PessoaFormService, [])
                     path: fail.data.error[0],
                     message: fail.data.error[1]
                 }                
-                console.log(fail.data)
+                MainService.notificacao(fail.status, fail.data.mensagem)
             })
         }
 

@@ -9,6 +9,11 @@ function HomeController($http, HomeService, $state) {
         $state.go('cidade')
 
     }
+
+    self.verPessoas = function(){
+        $state.go('pessoa')
+
+    }
 }
 
 export const HomeComponent = {

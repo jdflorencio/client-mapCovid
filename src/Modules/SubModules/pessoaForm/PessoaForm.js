@@ -16,7 +16,6 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
             $state.go('pessoa_adicionar')
             self.title = "Adicionar Pessoa"
             self.button_text = "Salvar"
-
     }
 
     self.option_modal = ''

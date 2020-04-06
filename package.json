@@ -29,6 +29,7 @@
     "@material/theme": "^5.1.0",
     "@uirouter/angularjs": "^1.0.25",
     "angular": "^1.7.9",
+    "angular-input-masks": "^4.4.1",
     "babel-loader": "^8.1.0",
     "html-webpack-plugin": "^4.0.1",
     "material-components-web": "^5.1.0",
