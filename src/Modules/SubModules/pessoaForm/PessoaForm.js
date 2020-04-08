@@ -6,6 +6,7 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
     self = this
     let urlParams = Number.isInteger(parseInt($stateParams.id))
     PessoaFormService.cidades()
+    PessoaFormService.situacao()
     switch (urlParams) {
         case true:
             self.title = "Editar Pessoa"
@@ -37,6 +38,11 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
        }
     }
 
+    self.atulizar_situacao = function() {
+        
+        PessoaFormService.updateSituacao($stateParams.id)
+    }
+
     self.modalRemove = function() {
         const dialog = new MDCDialog(document.querySelector('.removed-dialog'));
         dialog.open()
@@ -44,6 +50,17 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
 
     self.removed = function() {
         PessoaFormService.remove($stateParams.id)
+    }
+
+    self.modalSituacao = function() {
+        const dialog = new MDCDialog(document.querySelector('.situacao-dialog'));
+        dialog.open()
+        
+    }
+
+    self.modalCidade = function() {
+        const dialog = new MDCDialog(document.querySelector('.cidade-dialog'));
+        dialog.open()
     }
 }
 

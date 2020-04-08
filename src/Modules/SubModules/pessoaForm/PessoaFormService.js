@@ -1,6 +1,6 @@
 const PessoaFormService = 'pessoaFormService'
 angular.module(PessoaFormService, [])
-    .factory('PessoaFormService', function ($http, API, $state, MainService, $filter) {
+    .factory('PessoaFormService', function ($http, API, $state, MainService, $filter, FormatToAPI, $window) {
         const services = {}
         services.getOne = function (id) {
             return $http.get(`${API}/pessoa/${id}`)
@@ -26,6 +26,7 @@ angular.module(PessoaFormService, [])
                         }
                     })
                     self.pessoa = result.data.dados
+                    self.situacao_current = self.pessoa.situacao
                 })
                 .catch(fail => {
                     MainService.notificacao()
@@ -39,14 +40,16 @@ angular.module(PessoaFormService, [])
                     self.cidades = result.data.dados
                 })
                 .catch(fail => {
-                    MainService.notificacao()
+                    console.log(fail)
                 })
         }
 
         services.update = function (param) {
+            self.pessoa.data_nascimento = FormatToAPI.dateFormat(self.pessoa.data_nascimento)
             return $http.put(`${API}/pessoa/${param}`, self.pessoa)
                 .then(result => {
                     MainService.notificacao(result.status, result.data.mensagem)
+                    services.getOne(param)
                 })
                 .catch(fail => {
                     self.error = {
@@ -83,37 +86,29 @@ angular.module(PessoaFormService, [])
                 })
         }
 
-        services.ufs = function () {
-            self.ufs = [
-                { descricao: "Rondônia", value: "RO" },
-                { descricao: "Acre", value: "AC" },
-                { descricao: "Amazonas", value: "AM" },
-                { descricao: "Roraima", value: "RR" },
-                { descricao: "Pará", value: "PA" },
-                { descricao: "Amapá", value: "AP" },
-                { descricao: "Tocantins", value: "TO" },
-                { descricao: "Maranhão", value: "MA" },
-                { descricao: "Piauí", value: "PI" },
-                { descricao: "Ceará", value: "CE" },
-                { descricao: "Rio Grande do Norte", value: "RN" },
-                { descricao: "Paraíba", value: "PB" },
-                { descricao: "Pernambuco", value: "PE" },
-                { descricao: "Alagoas", value: "AL" },
-                { descricao: "Sergipe", value: "SE" },
-                { descricao: "Bahia", value: "BA" },
-                { descricao: "Minas Gerais", value: "MG" },
-                { descricao: "Espírito Santo", value: "ES" },
-                { descricao: "Rio de Janeiro", value: "RJ" },
-                { descricao: "São Paulo", value: "SP" },
-                { descricao: "Paraná", value: "PR" },
-                { descricao: "Santa Catarina", value: "SC" },
-                { descricao: "Rio Grande do Sul", value: "RS" },
-                { descricao: "Mato Grosso do Sul", value: "MS" },
-                { descricao: "Mato Grosso", value: "MT" },
-                { descricao: "Goiás", value: "GO" },
-                { descricao: "Distrito Federal", value: "DF" }
-            ]
+        services.updateSituacao = function (param) {
+            return $http.put(`${API}/pessoa/${param}/situacao`, { situacao: self.pessoa.situacao, anterior: self.situacao_current, uf: self.pessoa.cidade.uf })
+                .then(result => {
+                    // $state.go('pessoa_editar',  { id: param })
+                    // $window.location.reload()
+                    services.getOne(param)
+                    MainService.notificacao(result.status, result.data.mensagem)
+                })
+                .catch(fail => {
+                    MainService.notificacao(fail.status, fail.data.mensagem)
+                })
+
         }
+        services.situacao = function () {
+            self.situacao = [
+                { situacao: "1", descricao: "Suspeito" },
+                { situacao: "2", descricao: "Em Análise" },
+                { situacao: "3", descricao: "Confirmado" },
+                { situacao: "4", descricao: "Descartado" },
+            ]
+
+        }
+
         return services
     })
 

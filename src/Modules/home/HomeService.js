@@ -7,6 +7,7 @@ angular.module(HomeService, [])
     services.getAll = function() {
       return $http.get(`${API}/quadro`)
       .then( result =>{
+
         self.quadro =  result.data.dados
 
       })
@@ -14,10 +15,7 @@ angular.module(HomeService, [])
           console.log(error)
       })
     }
-
-
-    return services
-    
+    return services    
 })
 
 export default HomeService
