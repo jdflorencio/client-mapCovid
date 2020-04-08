@@ -11,7 +11,8 @@
 
         </div>
         <div class="grid-table-main">
-            <mdTable class="teste mdc-data-table">
+            <h4 ng-if="!ctrl.quadro.geral">Nenhum dado disponível</h4>
+            <mdTable class="teste mdc-data-table" ng-if="ctrl.quadro.geral">
                 <table class="mdc-data-table__table" aria-label="Dessert calories">
                     <thead>
                         <tr class="mdc-data-table__header-row">
@@ -49,7 +50,8 @@
             </button>
         </div>
         <div class="grid-table-main">
-            <mdTable class="teste mdc-data-table">
+            <h4 ng-if="!ctrl.quadro.cidade">Nenhum dado disponível</h4>
+            <mdTable class="teste mdc-data-table" ng-if="ctrl.quadro.cidade">
                 <table class="mdc-data-table__table" aria-label="Dessert calories">
                     <thead>
                         <tr class="mdc-data-table__header-row">
