@@ -4,7 +4,24 @@ import { MDCDialog } from '@material/dialog'
 
 function PessoaController(PessoaFormService, $state, $stateParams) {
     self = this
-    let parametroId 
+    let parametroId
+
+    self.exibir_view = {
+        btn_salvar: false,
+        btn_excluir: false,
+        btn_editar: false,
+        btn_alterar_cidade: false,
+        btn_alterar_prontuario: false,
+        input_nome_nascimento: false,
+        select_cidade_main: false,
+        div_cidade: true,
+        div_prontuario: true
+
+    }
+
+
+
+
 
     const urlParams = Number.isInteger(parseInt($stateParams.id))
         || Number.isInteger(parseInt($stateParams.visualizando))
@@ -14,33 +31,46 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
             return param == "id" || param == "visualizando"
         })
 
+
+
     PessoaFormService.cidades()
     PessoaFormService.situacao()
 
     switch (urlParams) {
         case true:
             parametroId = $stateParams[tipo_visualizacao]
-            console.log('>>>>', parametroId)       
 
             switch (tipo_visualizacao) {
                 case "id":
                     self.title = "Editar Pessoa"
                     self.button_text = "Atualizar"
-                    self.editar = true
-                    break
-                case "vizualizando":
-                    self.title = "Editar Pessoa"
-                    self.editar = false
-                    break
+                    self.exibir_view.div_cidade = false
+                    self.exibir_view.btn_salvar = true
+                    self.exibir_view.div_prontuario = false
 
+                    break
+                case "visualizando":
+                    self.title = "Visualizando Pessoa"
+                    
+                    self.exibir_view.btn_editar = true
+                    self.exibir_view.btn_alterar_cidade = true
+                    self.exibir_view.btn_alterar_prontuario = true
+                    self.exibir_view.input_nome_nascimento = true
+
+                    break
             }
 
             PessoaFormService.getOne(parametroId)
             break
         default:
-            // $state.go('pessoa_adicionar')
+            $state.go('pessoa_adicionar')
+
+
             self.title = "Adicionar Pessoa"
             self.button_text = "Salvar"
+            self.exibir_view.btn_salvar = true
+            self.exibir_view.select_cidade_main = true
+
     }
 
     self.option_modal = ''
@@ -53,6 +83,10 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
         dialog.open()
     }
 
+    self.editarCadastro = function () {
+        $state.go('pessoa_editar', { id: parametroId })
+    }
+
     self.confirmado = function () {
         if (self.button_text == "Atualizar") {
             return PessoaFormService.update(parametroId)
@@ -62,12 +96,12 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
         }
     }
 
-    self.atulizar_situacao = function () {
+    self.atualizar_situacao = function () {
 
         PessoaFormService.updateSituacao(parametroId)
     }
 
-    self.atualizar_cidade = function() {
+    self.atualizar_cidade = function () {
         PessoaFormService.updateCidade(parametroId)
     }
 

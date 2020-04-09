@@ -54,6 +54,7 @@ angular.module(PessoaFormService, [])
         }
 
         services.add = function () {
+            self.pessoa.data_nascimento = FormatToAPI.dateFormat(self.pessoa.data_nascimento)
             return $http.post(`${API}/pessoa`, self.pessoa)
                 .then(result => {
                     MainService.notificacao(result.status, result.data.mensagem)

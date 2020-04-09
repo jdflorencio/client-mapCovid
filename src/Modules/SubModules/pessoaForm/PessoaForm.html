@@ -17,20 +17,23 @@
                 <div class="mdc-layout-grid__cell">
                     <div class="mdc-layout-grid__inner">
                         <div class="mdc-layout-grid__cell">
-                            <button ng-click="" class="mdc-button">
+                            <button ng-show="ctrl.exibir_view.btn_editar" ng-click="ctrl.editarCadastro()"
+                                class="mdc-button">
                                 <div class="mdc-button__ripple"></div>
                                 <span class="mdc-button__label"> Editar dados</span>
                             </button>
                         </div>
                         <div class="mdc-layout-grid__cell">
-                            <button ng-click="ctrl.modalCidade()" class="mdc-button">
+                            <button ng-show="ctrl.exibir_view.btn_alterar_cidade" ng-click="ctrl.modalCidade()"
+                                class="mdc-button">
                                 <div class="mdc-button__ripple"></div>
 
                                 <span class="mdc-button__label"> Alterar Cidade</span>
                             </button>
                         </div>
                         <div class="mdc-layout-grid__cell">
-                            <button ng-click="ctrl.modalSituacao()" class="mdc-button">
+                            <button ng-show="ctrl.exibir_view.btn_alterar_prontuario" ng-click="ctrl.modalSituacao()"
+                                class="mdc-button">
                                 <div class="mdc-button__ripple"></div>
                                 <span class="mdc-button__label"> Atualizar Prontuario</span>
                             </button>
@@ -44,14 +47,15 @@
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
                     <label>Pessoa</label>
-                    <input ng-disabled="!ctrl.editar" type="text" ng-model="ctrl.pessoa.nome">
+                    <input ng-disabled="ctrl.exibir_view.input_nome_nascimento" type="text" ng-model="ctrl.pessoa.nome">
                     <div ng-if="ctrl.error.path == 'nome'" style="color: red"> {{ctrl.error.message}}</div>
                 </div>
                 <div class="mdc-layout-grid__cell">
 
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
                         <label>Data de Nasicmento *</label>
-                        <input ng-disabled="!ctrl.editar" type="text" ng-model="ctrl.pessoa.data_nascimento" ui-date-mask>
+                        <input ng-disabled="ctrl.exibir_view.input_nome_nascimento" type="text"
+                            ng-model="ctrl.pessoa.data_nascimento" ui-date-mask>
 
                         <div ng-if="ctrl.error.path == 'data_nascimento'" style="color: red"> {{ctrl.error.message}}
                         </div>
@@ -60,24 +64,34 @@
                 </div>
             </div>
             <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                <div ng-show="ctrl.exibir_view.div_cidade"
+                    class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
                     <label>Cidade *</label>
-                    
-                    <input ng-disabled="true" type="text"  value="{{ctrl.pessoa.cidade.nome}} / {{ctrl.pessoa.cidade.uf}}" >
+
+                    <select ng-show="ctrl.exibir_view.select_cidade_main" id="" ng-model="ctrl.pessoa.cidade_id">
+                        <option ng-value="cidade.id" value="cidade.id" ng-repeat="cidade in ctrl.cidades">
+                            {{cidade.nome}} - {{cidade.uf}}
+                        </option>
+                    </select>
+
+                    <input ng-show="!ctrl.exibir_view.select_cidade_main" ng-disabled="true" type="text"
+                        value="{{ctrl.pessoa.cidade.nome}} / {{ctrl.pessoa.cidade.uf}}">
                     <div ng-if="ctrl.error.path == 'cidade_id'" style="color: red"> {{ctrl.error.message}}</div>
                 </div>
             </div>
 
-            <div ng-show="ctrl.editar" class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
-                    <button  ng-click="ctrl.salvar()" class="mdc-button">
+            <div class="mdc-layout-grid__inner">
+                <div ng-show="ctrl.exibir_view.btn_salvar"
+                    class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
+                    <button ng-click="ctrl.salvar()" class="mdc-button">
                         <div class="mdc-button__ripple"></div>
                         <span class="mdc-button__label"> {{ctrl.button_text}}</span>
                     </button>
                 </div>
                 <div class="mdc-layout-grid__cell">
 
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
+                    <div ng-show="ctrl.exibir_view.btn_excluir"
+                        ng-class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
                         <button ng-click="ctrl.modalRemove()" class="mdc-button">
                             <div class="mdc-button__ripple"></div>
                             <span class="mdc-button__label"> Excluir</span>
@@ -88,7 +102,7 @@
 
             </div>
 
-            <div class="grid-table-main">
+            <div class="grid-table-main" ng-show=" ctrl.exibir_view.div_prontuario">
                 <mdTable class="teste mdc-data-table">
                     <table class="mdc-data-table__table" aria-label="Dessert calories">
                         <thead>
@@ -200,7 +214,8 @@
             <div class="mdc-dialog__content" id="my-dialog-content">
                 {{ctrl.pessoa.situacao}}
                 <select id="" name="" ng-model="ctrl.pessoa.situacao">
-                    <option value="{{situacao.situacao}}" ng-repeat="situacao in ctrl.situacao">{{situacao.descricao}} {{situacao.situacao}}</option>
+                    <option value="{{situacao.situacao}}" ng-repeat="situacao in ctrl.situacao">{{situacao.descricao}}
+                        {{situacao.situacao}}</option>
                 </select>
             </div>
             <footer class="mdc-dialog__actions">
@@ -208,7 +223,7 @@
                     <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label">Não</span>
                 </button>
-                <button ng-click="ctrl.atulizar_situacao()" type="button" class="mdc-button mdc-dialog__button"
+                <button ng-click="ctrl.atualizar_situacao()" type="button" class="mdc-button mdc-dialog__button"
                     data-mdc-dialog-action="yes">
                     <div class="mdc-button__ripple"></div>
                     <span class="mdc-button__label">Sim</span>
@@ -231,11 +246,13 @@
                 <!--   -->
             </h2>
             <div class="mdc-dialog__content" id="my-dialog-content">
-                <select ng-disabledname="" id="" ng-model="ctrl.cidadeNova">
-                        <option ng-value="cidade.id" value="cidade.id" ng-repeat="cidade in ctrl.cidades">
-                            {{cidade.nome}} - {{cidade.uf}}
-                        </option>
-                    </select>
+
+                <select id="" ng-model="ctrl.cidadeNova">
+
+                    <option ng-value="cidade.id" value="cidade.id" ng-repeat="cidade in ctrl.cidades">
+                        {{cidade.nome}} - {{cidade.uf}}
+                    </option>
+                </select>
             </div>
             <footer class="mdc-dialog__actions">
                 <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
