@@ -5,7 +5,6 @@ angular.module(PessoaFormService, [])
         services.getOne = function (id) {
             return $http.get(`${API}/pessoa/${id}`)
                 .then(result => {
-
                     const table = {
                         1: "Caso Suspeito",
                         2: "Caso em Análise",
@@ -91,8 +90,21 @@ angular.module(PessoaFormService, [])
                 .catch(fail => {
                     MainService.notificacao(fail.status, fail.data.mensagem)
                 })
-
         }
+
+        services.updateCidade = function (param) {
+            return $http.put(`${API}/pessoa/${param}/cidade`, {cidade: self.cidadeNova})
+            .then(result => {
+                // $state.go('pessoa_editar',  { id: param })
+                // $window.location.reload()
+                services.getOne(param)
+                MainService.notificacao(result.status, result.data.mensagem)
+            })
+            .catch(fail => {
+                MainService.notificacao(fail.status, fail.data.mensagem)
+            })
+        }
+
         services.situacao = function () {
             self.situacao = [
                 { situacao: "1", descricao: "Suspeito" },

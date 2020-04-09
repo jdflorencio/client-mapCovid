@@ -12,6 +12,10 @@ function PessoaController(PessoaService, $state) {
     self.editar = function(id) {
         $state.go('pessoa_editar', {id})
     }
+
+    self.visualizar = function(visualizando) {
+        $state.go('pessoa_visualizar', {visualizando})
+    }
 }
 
 export const PessoaComponent = {
