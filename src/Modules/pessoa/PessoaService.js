@@ -8,22 +8,16 @@ angular.module(PessoaService, [])
       return $http.get(`${API}/pessoa`)
         .then(result => {
 
+          const table = {
+            1: "Caso Suspeito",
+            2: "Caso em Análise",
+            3: "Caso Confirmado",
+            4: "Caso Descartado",
+        }
+
+
           result.data.dados.map(pessoa => {
-            if (pessoa.prontuario[0].situacao == 1) {
-              pessoa.prontuario[0].situacao = "Casos Suspeito"
-            }
-
-            if (pessoa.prontuario[0].situacao == 2) {
-              pessoa.prontuario[0].situacao = "Casos análise"
-            }
-
-            if (pessoa.prontuario[0].situacao == 3) {
-              pessoa.prontuario[0].situacao = "Casos confirmado"
-            }
-
-            if (pessoa.prontuario[0].situacao == 4) {
-              pessoa.prontuario[0].situacao = "Descartado"
-            }
+            pessoa.situacao = table[pessoa.situacao]
         })
         
       self.pessoas = result.data.dados

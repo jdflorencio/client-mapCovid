@@ -5,25 +5,19 @@ angular.module(PessoaFormService, [])
         services.getOne = function (id) {
             return $http.get(`${API}/pessoa/${id}`)
                 .then(result => {
+
+                    const table = {
+                        1: "Caso Suspeito",
+                        2: "Caso em Análise",
+                        3: "Caso Confirmado",
+                        4: "Caso Descartado",
+                    }
+
                     result.data.dados.data_nascimento = $filter('date')(result.data.dados.data_nascimento, 'dd/MM/yyyy')
                     result.data.dados.prontuario.map(prontuario => {
 
+                        prontuario.situacao = table[prontuario.situacao]
 
-                        if (prontuario.situacao == 1) {
-                            prontuario.situacao = "Casos Suspeito"
-                        }
-
-                        if (prontuario.situacao == 2) {
-                            prontuario.situacao = "Casos análise"
-                        }
-
-                        if (prontuario.situacao == 3) {
-                            prontuario.situacao = "Casos confirmado"
-                        }
-
-                        if (prontuario.situacao == 4) {
-                            prontuario.situacao = "Descartado"
-                        }
                     })
                     self.pessoa = result.data.dados
                     self.situacao_current = self.pessoa.situacao
