@@ -12,7 +12,8 @@ angular.module(PessoaFormService, [])
                         4: "Caso Descartado",
                     }
 
-                    result.data.dados.data_nascimento = $filter('date')(result.data.dados.data_nascimento, 'dd/MM/yyyy')
+                    result.data.dados.data_nascimento = new Date(result.data.dados.data_nascimento)
+
                     result.data.dados.prontuario.map(prontuario => {
 
                         prontuario.situacao = table[prontuario.situacao]
@@ -20,6 +21,8 @@ angular.module(PessoaFormService, [])
                     })
                     self.pessoa = result.data.dados
                     self.situacao_current = self.pessoa.situacao
+                    self.pessoa.data_nascimento
+
                 })
                 .catch(fail => {
                     MainService.notificacao()
@@ -38,7 +41,8 @@ angular.module(PessoaFormService, [])
         }
 
         services.update = function (param) {
-            self.pessoa.data_nascimento = FormatToAPI.dateFormat(self.pessoa.data_nascimento)
+            // self.pessoa.data_nascimento = FormatToAPI.dateFormat(self.pessoa.data_nascimento)
+            // self.pessoa.data_nascimento = $filter('date')(self.pessoa.data_nascimento, 'yyyy-MM-dd' )
             return $http.put(`${API}/pessoa/${param}`, self.pessoa)
                 .then(result => {
                     MainService.notificacao(result.status, result.data.mensagem)
@@ -54,7 +58,7 @@ angular.module(PessoaFormService, [])
         }
 
         services.add = function () {
-            self.pessoa.data_nascimento = FormatToAPI.dateFormat(self.pessoa.data_nascimento)
+            
             return $http.post(`${API}/pessoa`, self.pessoa)
                 .then(result => {
                     MainService.notificacao(result.status, result.data.mensagem)

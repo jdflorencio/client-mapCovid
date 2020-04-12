@@ -18,11 +18,6 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
         div_prontuario: true
 
     }
-
-
-
-
-
     const urlParams = Number.isInteger(parseInt($stateParams.id))
         || Number.isInteger(parseInt($stateParams.visualizando))
 
@@ -31,10 +26,10 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
             return param == "id" || param == "visualizando"
         })
 
-
-
     PessoaFormService.cidades()
     PessoaFormService.situacao()
+
+    
 
     switch (urlParams) {
         case true:
@@ -47,15 +42,17 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
                     self.exibir_view.div_cidade = false
                     self.exibir_view.btn_salvar = true
                     self.exibir_view.div_prontuario = false
-
-                    break
-                case "visualizando":
-                    self.title = "Visualizando Pessoa"
                     
-                    self.exibir_view.btn_editar = true
-                    self.exibir_view.btn_alterar_cidade = true
-                    self.exibir_view.btn_alterar_prontuario = true
-                    self.exibir_view.input_nome_nascimento = true
+                    break
+                    case "visualizando":
+                        self.title = "Visualizando Pessoa"
+                        
+                        self.exibir_view.btn_editar = true
+                        self.exibir_view.btn_alterar_cidade = true
+                        self.exibir_view.btn_alterar_prontuario = true
+                        self.exibir_view.input_nome_nascimento = true
+                        self.exibir_view.btn_excluir = true
+                    
 
                     break
             }
