@@ -51,7 +51,7 @@ function PessoaController(PessoaFormService, $state, $stateParams) {
                         self.exibir_view.btn_alterar_cidade = true
                         self.exibir_view.btn_alterar_prontuario = true
                         self.exibir_view.input_nome_nascimento = true
-                        self.exibir_view.btn_excluir = true
+                        self.exibir_view.btn_excluir = true 
                     
 
                     break

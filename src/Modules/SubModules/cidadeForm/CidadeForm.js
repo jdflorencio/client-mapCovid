@@ -34,7 +34,7 @@ function CidadeController(CidadeFormService, $state, $stateParams) {
                     self.button_text = "Atualizar"
                     self.exibir_view.btn_salvar = true
                     self.exibir_view.inputs = false
-                    
+
                     break
                 case "visualizando":
                     self.title = "Visualizado o cadastro de cidades"
@@ -47,6 +47,8 @@ function CidadeController(CidadeFormService, $state, $stateParams) {
             break
         default:
             $state.go('cidade_adicionar')
+            self.exibir_view.btn_salvar = true
+            self.exibir_view.inputs = false
             self.title = "Adicionar Cidade"
             self.button_text = "Salvar"
 
@@ -80,8 +82,8 @@ function CidadeController(CidadeFormService, $state, $stateParams) {
         CidadeFormService.remove(parametroId)
     }
 
-    self.editar = function(){
-        $state.go('cidade_editar',  {id: parametroId})
+    self.editar = function () {
+        $state.go('cidade_editar', { id: parametroId })
     }
 }
 

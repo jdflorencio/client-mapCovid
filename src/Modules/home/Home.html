@@ -11,7 +11,7 @@
 
         </div>
         <div class="grid-table-main">
-            <h4 ng-if="!ctrl.quadro.geral || ctrl.quadro.geral.length ==0">Nenhum dado disponível</h4>
+            <h4 ng-if="!ctrl.quadro.geral || ctrl.quadro.geral.length == 0">Nenhum dado disponível</h4>
             <mdTable class="teste mdc-data-table" ng-if="ctrl.quadro.geral &&  ctrl.quadro.geral.length > 0">
                 <table class="mdc-data-table__table" aria-label="Dessert calories">
                     <thead>
@@ -50,8 +50,8 @@
             </button>
         </div>
         <div class="grid-table-main">
-            <h4 ng-if="!ctrl.quadro.cidade ||  ctrl.quadro.cidade.length == 0">Nenhum dado disponível</h4>
-            <mdTable class="teste mdc-data-table" ng-if="ctrl.quadro.cidade &&  ctrl.quadro.cidade.length > 0">
+            <h4 ng-if="!ctrl.quadro.cidade[1] ||  ctrl.quadro.cidade[1].length == 0">Nenhum dado disponível</h4>
+            <mdTable class="teste mdc-data-table" ng-if="ctrl.quadro.cidade[1] && ctrl.quadro.cidade[1].length > 0">
                 <table class="mdc-data-table__table" aria-label="Dessert calories">
                     <thead>
                         <tr class="mdc-data-table__header-row">
