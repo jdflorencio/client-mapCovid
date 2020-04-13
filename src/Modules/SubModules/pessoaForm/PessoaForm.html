@@ -53,7 +53,7 @@
                 <div class="mdc-layout-grid__cell">
 
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
-                        <label>Data de Nasicmento *</label> {{ctrl.pessoa.data_nascimento }}
+                        <label>Data de Nasicmento *</label> 
                         <input ng-disabled="ctrl.exibir_view.input_nome_nascimento" type="date"
                             ng-model="ctrl.pessoa.data_nascimento">
 
@@ -91,7 +91,7 @@
                 <div class="mdc-layout-grid__cell">
 
                     <div ng-show="ctrl.exibir_view.btn_excluir"
-                        ng-class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
+                        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
                         <button ng-click="ctrl.modalRemove()" class="mdc-button">
                             <div class="mdc-button__ripple"></div>
                             <span class="mdc-button__label"> Excluir</span>

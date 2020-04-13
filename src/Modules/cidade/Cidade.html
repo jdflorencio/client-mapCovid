@@ -1,5 +1,10 @@
 <div class="mdc-layout-grid">
     <div class="mdc-layout-grid__cell--span-12-desktop">
+        <button ng-click="ctrl.voltarQuadro()" class="mdc-button">
+            <div class="mdc-button__ripple"></div>
+            <i class="material-icons mdc-icon-button__icon">reply</i>
+            <span class="mdc-button__label"> Voltar ao quadro geral</span>
+        </button>
 
         <div ng-if="ctrl.cidades == undefined">
             <h1>Não tem cidades cadastradas aqui</h1>

@@ -98,7 +98,7 @@ angular.module(PessoaFormService, [])
         }
 
         services.updateCidade = function (param) {
-            return $http.put(`${API}/pessoa/${param}/cidade`, {cidade: self.cidadeNova})
+            return $http.put(`${API}/pessoa/${param}/cidade`, {cidade_nova: self.cidadeNova, uf_anterior: self.pessoa.cidade.uf, situacao: self.pessoa.situacao})
             .then(result => {
                 // $state.go('pessoa_editar',  { id: param })
                 // $window.location.reload()
