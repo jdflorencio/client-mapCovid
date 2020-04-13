@@ -16,6 +16,10 @@ function CidadeController(CidadeService, $state) {
     self.voltarQuadro = function () {
         $state.go('home')
     }
+
+    self.visualizar = function (visualizando) {
+        $state.go('cidade_visualizar', { visualizando })
+    }
 }
 
 export const CidadeComponent = {

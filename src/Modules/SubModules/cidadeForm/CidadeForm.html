@@ -1,5 +1,4 @@
 <div class="mdc-layout-grid">
-    <ui-alert titile="Aqui" message="error"></ui-alert>
 
     <div class="mdc-layout-grid__cell--span-12-desktop">
         <button ng-click="ctrl.retornar()" class="mdc-button">
@@ -7,43 +6,60 @@
             <i class="material-icons mdc-icon-button__icon">reply</i>
             <span class="mdc-button__label"> Voltar a lista de cidades</span>
         </button>
-        <h3>{{ctrl.title}}</h3>
-        <div class="mdc-card mdc-card--outlined">
 
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
-                    <label>Cidade</label>
-                    <input type="text" ng-model="ctrl.cidade.nome">
-                    <div ng-if="ctrl.error.path == 'nome'" style="color: red"> {{ctrl.error.message}}</div>
-                </div>
-            </div>
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
-                    <label>UFs</label>
-                    <select name="" id="" ng-model="ctrl.cidade.uf">
-                        <option value="{{uf.value}}" ng-repeat="uf in ctrl.ufs">{{uf.descricao}} - {{uf.value}}</option>
-                    </select>
-                    <div ng-if="ctrl.error.path == 'uf'" style="color: red"> {{ctrl.error.message}}</div>
-                </div>
-            </div>
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
-                    <button ng-click="ctrl.salvar()" class="mdc-button">
-                        <div class="mdc-button__ripple"></div>
-                        <span class="mdc-button__label"> {{ctrl.button_text}}</span>
-                    </button>
+    </div>
 
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop input-and-label">
-                        <button ng-click="ctrl.modalRemove()" class="mdc-button">
-                            <div class="mdc-button__ripple"></div>
-                            <span class="mdc-button__label"> Excluir</span>
-                        </button>
-                    </div>
-
-                </div>
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell">
+                <h3>{{ctrl.title}}</h3>
             </div>
+            <div class="mdc-layout-grid__cell">
+                <button ng-click="ctrl.editar()" ng-show="ctrl.exibir_view.btn_editar" class="mdc-button">
+                    <div class="mdc-button__ripple"></div>
+
+                    <span class="mdc-button__label"> Alterar Cidade</span>
+                </button>
+            </div>
+
         </div>
     </div>
+    <div class="mdc-card mdc-card--outlined">
+
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                <label>Cidade</label>
+                <input ng-disabled="ctrl.exibir_view.inputs" type="text" ng-model="ctrl.cidade.nome">
+                <div ng-if="ctrl.error.path == 'nome'" style="color: red"> {{ctrl.error.message}}</div>
+            </div>
+        </div>
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                <label>UFs</label>
+                <select ng-disabled="ctrl.exibir_view.inputs" name="" id="" ng-model="ctrl.cidade.uf">
+                    <option value="{{uf.value}}" ng-repeat="uf in ctrl.ufs">{{uf.descricao}} - {{uf.value}}</option>
+                </select>
+                <div ng-if="ctrl.error.path == 'uf'" style="color: red"> {{ctrl.error.message}}</div>
+            </div>
+        </div>
+        <div class="mdc-layout-grid__inner">
+            <div ng-show="ctrl.exibir_view.btn_salvar" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                <button  ng-click="ctrl.salvar()" class="mdc-button">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label"> {{ctrl.button_text}}</span>
+                </button>
+
+            </div>
+            <div ng-show="ctrl.exibir_view.btn_excluir" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop input-and-label">
+                <button ng-click="ctrl.modalRemove()" class="mdc-button">
+                    <div class="mdc-button__ripple"></div>
+                    <span class="mdc-button__label"> Excluir</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
 </div>
 
 <!-- dialog -->
